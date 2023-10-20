@@ -1,0 +1,96 @@
+/* Add styles for the chatbot container */
+.chatbot {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 300px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+}
+.loading-gif-container {
+  height: 50px;
+  margin-bottom: 100px;
+  width: 100px;
+}
+
+/* Add styles for the chatbot toggler button */
+.chatbot-toggler {
+  background-color: #0074e4;
+  color: #fff;
+  border: none;
+  border-radius: 10px 10px 0 0;
+  padding: 10px 15px;
+  cursor: pointer;
+  text-align: center;
+}
+
+/* Add styles for the chatbot header */
+.chatbot header {
+  background-color: #0074e4;
+  color: #fff;
+  padding: 10px;
+  border-radius: 10px 10px 0 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Add styles for the close button in the header */
+.close-btn {
+  cursor: pointer;
+}
+
+/* Add styles for the chatbox container */
+.chatbox {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  max-height: 300px;
+  overflow-y: auto;
+  padding: 10px;
+  min-height: 170px;
+}
+
+/* Add styles for individual chat messages */
+.chat {
+  padding: 10px;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+}
+
+/* Add styles for the chat input area */
+.chat-input {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+}
+.inputField {
+  height: "26px";
+  width: "100%";
+  border: "2px solid #efefef";
+  padding: "8px";
+  outline: "none";
+}
+
+/* Add styles for the send button */
+.material-symbols-rounded {
+  cursor: pointer;
+  font-size: 24px;
+  margin-left: 10px;
+}
+
+/* Add styles for the AjnaLens logo image */
+.image-logo {
+  max-width: 50px;
+  max-height: 50px;
+  margin-right: 10px;
+}
+
+/* Add styles for the "Thinking..." message */
+.incoming p:empty::before {
+  content: "Thinking...";
+  color: #ccc;
+}
