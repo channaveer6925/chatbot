@@ -11,42 +11,45 @@ const ChatBot = () => {
     setInput(e.target.value);
   };
 
- const handleSendMessage = () => {
-   if (input.trim() === "") return;
+  const handleSendMessage = () => {
+    if (input.trim() === "") return;
 
-   // Add the user's message and loading indicator to the list of messages
-   setMessages((prevMessages) => [
-     ...prevMessages,
-     { text: input, user: true },
-     { text: "Loading...", user: false, loading: true },
-   ]);
-   setInput("");
+    // Add the user's message and loading indicator to the list of messages
+    setMessages((prevMessages) => [
+      ...prevMessages,
+      { text: input, user: true },
+      { text: "Loading...", user: false, loading: true },
+    ]);
+    setInput("");
 
-   axios({
-     method: "post",
-     url: "http://103.189.172.18:8010/api/prompt_route/",
-     headers: {
-       Accept: "application/json",
-       "Content-Type": "application/x-www-form-urlencoded",
-     },
-     data: `user_prompt=${encodeURIComponent(input)}`,
-   })
-     .then((response) => {
-       // Replace the loading indicator with the actual response
-       setMessages((prevMessages) => [
-         ...prevMessages.slice(0, -1),
-         {
-           text: response.data, // Assuming your API response contains the text
-           user: false,
-           loading: false,
-         },
-       ]);
-     })
-     .catch((error) => {
-       console.error("Error fetching response:", error);
-       // Handle error and update messages accordingly
-     });
- };
+    axios({
+      method: "post",
+      url: "http://103.189.172.18:8010/api/prompt_route/",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
+      data: `user_prompt=${encodeURIComponent(input)}`,
+    })
+      .then((response) => {
+        // Extract the response data from the object
+        const responseData = response.data;
+
+        // Replace the loading indicator with the actual response
+        setMessages((prevMessages) => [
+          ...prevMessages.slice(0, -1),
+          {
+            text: responseData.Answer, // Assuming 'Prompt' is a property of the response object
+            user: false,
+            loading: false,
+          },
+        ]);
+      })
+      .catch((error) => {
+        console.error("Error fetching response:", error);
+        // Handle error and update messages accordingly
+      });
+  };
 
   // http://103.189.172.18:8010/api/prompt_route/
   const renderMessages = () => {
