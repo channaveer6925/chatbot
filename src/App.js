@@ -1,11 +1,11 @@
 import "./App.css";
+import ChatBot from "./component/chat2";
 // import Chat2 from "./component/chat2/Chat2";
-import Chatbot from "./component/chatbot/Chat";
 
 function App() {
   return (
     <div className="App">
-      <Chatbot />
+      <ChatBot />
     </div>
   );
 }
